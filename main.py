@@ -1,4 +1,7 @@
-from sqlalchemy import Table, Column, Integer, String, MetaData, create_engine, insert
+from sqlalchemy import Table, Column, Integer, String, MetaData, insert
+from sqlalchemy.orm import sessionmaker
+from database import engine
+from ORM import insert_data
 
 
 def create_table(engine):
@@ -6,23 +9,22 @@ def create_table(engine):
     metadata.create_all(engine)
 
 
-def insert_data():
-    with engine.connect() as connection:
-        statement = insert(user_table).values([
-            {"name": "Ivan"},
-            {"name": "Gosh"}
-        ])
-        connection.execute(statement)
-        connection.commit()
+# def insert_data():
+#     with engine.connect() as connection:
+#         statement = insert(user_table).values([
+#             {"name": "Ivan"},
+#             {"name": "Gosh"}
+#         ])
+#         connection.execute(statement)
+#         connection.commit()
 
 
-engine = create_engine("sqlite:///data.db")
 metadata = MetaData()
 
-user_table = Table(
-    "workers", metadata,
-    Column("id", Integer, primary_key=True),
-    Column("name", String)
-)
+# user_table = Table(
+#     "workers", metadata,
+#     Column("id", Integer, primary_key=True),
+#     Column("name", String)
+# )
 
 insert_data()
