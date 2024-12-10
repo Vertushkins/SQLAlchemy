@@ -1,4 +1,4 @@
-from sqlalchemy import Table, Column, Integer, String, MetaData, create_engine, text, insert
+from sqlalchemy import Table, Column, Integer, String, MetaData, create_engine, insert
 
 
 def create_table(engine):
